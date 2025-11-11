@@ -145,8 +145,7 @@ class EyeBlinkMonitor:
             # Display overlay
             cv2.putText(frame, f"Fatigue: {self.metrics['fatigue_level']}", (20, 30),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 2)
-            cv2.putText(frame, f"Blinks/min: {self.metrics['blinks_per_min']}", (20, 60),
-                        cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 0), 2)
+            
             cv2.imshow("Fatigue Monitor (Shared Camera)", frame)
 
             if cv2.waitKey(1) & 0xFF == ord('q'):
