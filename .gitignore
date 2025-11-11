@@ -1,0 +1,17 @@
+# Python cache and virtual env
+__pycache__/
+*.pyc
+venv/
+
+# Model and data files
+models/
+data/output/realtime_fatigue_dataset.csv
+
+# Environment or credential files
+.env
+*.pkl
+*.joblib
+
+# IDE and OS files
+.DS_Store
+Thumbs.db
