@@ -14,7 +14,7 @@ from modules.camera import CameraManager
 
 class FeatureCollector:
     def __init__(self, model_path=None):
-        print("🎥 Initializing shared camera...")
+        print("Initializing shared camera...")
         self.camera = CameraManager()
 
         # Initialize all monitoring modules
@@ -80,10 +80,10 @@ class FeatureCollector:
         def run():
             print(f"[INFO] Collecting features every {interval}s...\n")
             while self.is_running:
-                # 1️⃣ Collect real-time feature snapshot
+                # Collect real-time feature snapshot
                 features = self.collect_features()
 
-                # 2️⃣ Predict fatigue level using trained LightGBM model
+                # Predict fatigue level using trained LightGBM model
                 try:
                     fatigue_level = predict_fatigue(features)
                     features["predicted_fatigue_level"] = fatigue_level
@@ -92,11 +92,11 @@ class FeatureCollector:
                     print(f"[WARN] Prediction failed: {e}")
                     features["predicted_fatigue_level"] = "UNKNOWN"
 
-                # 3️⃣ Store features (with prediction) in dataset
+                # Store features (with prediction) in dataset
                 with self.lock:
                     self.data.append(features)
 
-                # 4️⃣ Wait for next cycle
+                # Wait for next cycle
                 time.sleep(interval)
 
         self.thread = threading.Thread(target=run, daemon=True)

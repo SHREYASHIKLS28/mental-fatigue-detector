@@ -17,7 +17,7 @@ warnings.filterwarnings("ignore", category=UserWarning)
 # Load dataset
 DATA_PATH = "data/output/realtime_fatigue_dataset.csv"
 
-print("🔍 [INFO] Loading dataset...")
+print("[INFO] Loading dataset...")
 df = pd.read_csv(DATA_PATH, on_bad_lines='skip')
 print(f"[INFO] Dataset loaded with shape: {df.shape}")
 print(f"[INFO] Columns: {list(df.columns)}")

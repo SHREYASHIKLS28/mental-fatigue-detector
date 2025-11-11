@@ -9,10 +9,8 @@ from collections import deque
 
 class KeystrokeMonitor:
     def __init__(self, output_csv="data/raw/keystroke_log.csv", window_size=60):
-        """
-        Global keystroke monitor for real-time typing metrics.
-        Works even if VS Code window is not focused.
-        """
+        
+        
         self.output_csv = output_csv
         os.makedirs(os.path.dirname(output_csv), exist_ok=True)
 

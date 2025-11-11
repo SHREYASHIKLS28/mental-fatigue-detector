@@ -15,11 +15,11 @@ class CameraManager:
 
     def _start_camera(self):
         """Start the webcam and background thread safely."""
-        print(f"📷 Initializing camera at index {self.cam_index}...")
+        print(f"Initializing camera at index {self.cam_index}...")
         self.cap = cv2.VideoCapture(self.cam_index, cv2.CAP_DSHOW)
 
         if not self.cap.isOpened():
-            raise RuntimeError("❌ Could not open webcam. Please check your camera or restart it.")
+            raise RuntimeError("Could not open webcam. Please check your camera or restart it.")
 
         # Warm up camera
         time.sleep(0.3)
@@ -28,13 +28,13 @@ class CameraManager:
         # Start background thread
         self.thread = threading.Thread(target=self._update, daemon=True)
         self.thread.start()
-        print("✅ CameraManager started successfully.")
+        print("CameraManager started successfully.")
 
     def _update(self):
         """Continuously grab frames until stopped."""
         while self.running:
             if not self.cap.isOpened():
-                print("⚠️ Camera disconnected — attempting reconnect...")
+                print("Camera disconnected — attempting reconnect...")
                 time.sleep(1)
                 self._restart_camera()
                 continue
@@ -50,7 +50,7 @@ class CameraManager:
         # Cleanup after stop
         if self.cap and self.cap.isOpened():
             self.cap.release()
-        print("🛑 Camera thread stopped cleanly.")
+        print("Camera thread stopped cleanly.")
 
     def _restart_camera(self):
         """Restart camera safely after disconnection."""
@@ -72,7 +72,7 @@ class CameraManager:
         if not self.running:
             return
 
-        print("🧩 Stopping CameraManager...")
+        print("Stopping CameraManager...")
         self.running = False
 
         if self.thread and self.thread.is_alive():
@@ -86,4 +86,4 @@ class CameraManager:
         except:
             pass
 
-        print("📷 Camera released and stopped successfully.")
+        print("Camera released and stopped successfully.")
