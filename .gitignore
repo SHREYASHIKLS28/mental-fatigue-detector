@@ -9,7 +9,8 @@ data/output/realtime_fatigue_dataset.csv
 
 # Environment or credential files
 .env
-
+*.pkl
+*.joblib
 
 # IDE and OS files
 .DS_Store
